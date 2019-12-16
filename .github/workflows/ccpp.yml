@@ -14,13 +14,9 @@ jobs:
     needs: toolchain
     steps:
       - uses: actions/checkout@v1  
-        env:
-          ARCH: arm64
-          DTC_EXT: dtc
-          CROSS_COMPILE: ../gcc-linaro-6.5.0-2018.12-x86_64_aarch64-linux-gnu/bin/aarch64-linux-gnu-
       - name: Clean Working Enviroment
         run: rm -rf out
       - name: make defconfig
         run: make O=out judyln_lao_com-perf_defconfig ARCH=arm64
       - name: make
-        run: make O=out -j3
+        run: make O=out -j3 ARCH=arm64 DTC_EXT=dtc CROSS_COMPILE=../gcc-linaro-6.5.0-2018.12-x86_64_aarch64-linux-gnu/bin/aarch64-linux-gnu-
