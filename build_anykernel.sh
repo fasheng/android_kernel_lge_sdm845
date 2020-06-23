@@ -1,6 +1,6 @@
 #!/bin/bash
 
-version="$(./kernelversion.sh | grep -v make)"
+version="$(make O=out kernelversion | grep -v make)"
 echo "Kernel Version is ${version}"
 echo ""
 
